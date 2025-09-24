@@ -1,0 +1,12 @@
+Bash script file name for auto recon(Information gathering):-
+merged-recon.sh
+
+Commound use to acces full recon scan (Information Gathering in penetration testing):-
+
+Make it runnable and start it:
+chmod +x merged-recon.sh
+
+Dry-run (prints the commands without executing):
+./merged-recon.sh (or ./merged-recon.sh -n)
+
+

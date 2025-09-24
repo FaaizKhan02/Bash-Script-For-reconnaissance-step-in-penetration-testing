@@ -1,0 +1,35 @@
+ping 
+ping -c 5 -s 1200 -i 0.2 -t 64 target.com
+
+nmap 
+sudo nmap -sS -sU -p- -T4 -A -sV -O --osscan-guess --script "default,vuln" -Pn --reason -v --min-rate 200 -oA full-scan <target-or-@hosts-file>
+
+whois 
+whois example.com
+
+dig
+dig example.com
+
+nslookup
+nslookup example.com
+
+nikto 
+nikto -h https://example.com -p 443 -ssl -Tuning 123b -o nikto_report.html -Format html
+nikto -h https://example.com -ssl -o nikto.txt -Format txt
+nikto -h https://example.com 
+
+amass 
+amass enum -d example.com -active -brute -w /path/to/wordlist.txt -r /path/to/resolvers.txt -src -ip -dir ./amass_active_example -o amass_active_example.txt
+amass enum -d example.com -passive -config ~/.config/amass/config.ini -src -o amass_passive_example.txt -dir ./amass_passive_example
+ 
+ ffuf 
+ Subdomain
+ ffuf -u https://FUZZ.example.com/ -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-20000.txt -H "Host: FUZZ.example.com" -t 50 -mc 200,301,302,403 -fs 0 -o ffuf_subs.json -of json
+Directory discovery
+ffuf -u https://example.com/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/raft-large-directories-lowercase.txt -e .php,.html,.txt -t 50 -mc 200,301,302,403 -fs 0 -recursion -recursion-depth 2 -o ffuf_dirs.json -of json
+simple  Subdomain
+ffuf -u https://FUZZ.example.com/ -w ./wordlist.txt -mc 200
+simple open directories
+ffuf -u https://example.com/FUZZ -w ./wordlist.txt -mc 200
+
+
